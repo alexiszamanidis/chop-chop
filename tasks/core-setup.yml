@@ -1,0 +1,19 @@
+- name: Install System Packages 1 ()
+  become: true
+  apt:
+      name: ["htop"]
+      #   name: ["trash-cli", "docker.io", "flameshot", "preload", "htop"]
+# - name: Install System Packages 2 ()
+#   become: true
+#   apt:
+#       name: ["dpkg", "curl", "wget", "vim", "stow"]
+
+# - name: Install System Packages 3 ()
+#   become: true
+#   apt:
+#       name: ["snapd", "tree", "python", "nodejs", "npm"]
+
+# - name: Install System Packages 4 ()
+#   become: true
+#   apt:
+#       name: ["yarn", "maven", "default-jdk", "zsh"]

@@ -1,9 +1,13 @@
 - hosts: localhost
   connection: local
   become: true
+  pre_tasks:
+      - name: Update Apt
+        become: true
+        apt:
+            force_apt_get: true
+            update_cache: true
+            state: present
 
   tasks:
-      - name: install htop
-        package:
-            name:
-                - htop
+      - include: tasks/core-setup.yml
