@@ -2,7 +2,7 @@
 
 # default values
 port=3000
-image="ubuntu-bootstrap"
+image="ansible"
 tag=1
 
 # iterate throught user input arguments

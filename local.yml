@@ -10,4 +10,6 @@
             state: present
 
   tasks:
+      - include: tasks/git-setup.yml
       - include: tasks/core-setup.yml
+      - include: tasks/brave.yml
