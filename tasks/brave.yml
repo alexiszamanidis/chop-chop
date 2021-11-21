@@ -1,7 +1,7 @@
 - name: required libraries for brave
   become: true
   apt:
-      name: ["curl", "apt-transport-https"]
+      name: ["apt-transport-https"]
   tags:
       - brave
       - install
