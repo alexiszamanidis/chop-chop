@@ -13,23 +13,7 @@
   apt:
       name: ["tree", "python", "docker.io"]
 
-- name: Install System Packages 4 (nodejs, npm, yarn)
+- name: Install System Packages 4 (kitty, i3, rofi, compton, compton, i3blocks, feh)
   become: true
   apt:
-      name: ["nodejs", "npm", "yarn"]
-
-- name: Install System Packages 5 (vim, neovim, kitty, i3, rofi, compton, compton, i3blocks, feh)
-  become: true
-  apt:
-      name:
-          [
-              "vim",
-              "neovim",
-              "kitty",
-              "i3",
-              "rofi",
-              "compton",
-              "compton",
-              "i3blocks",
-              "feh",
-          ]
+      name: ["kitty", "i3", "rofi", "compton", "compton", "i3blocks", "feh"]
