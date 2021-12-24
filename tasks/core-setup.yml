@@ -2,18 +2,30 @@
   become: true
   apt:
       name: ["dpkg", "snapd", "curl", "wget", "tree"]
+  tags:
+      - install
+      - core
 
 - name: Install System Packages 1 (trash-cli, flameshot, preload, htop)
   become: true
   apt:
       name: ["trash-cli", "flameshot", "preload", "htop"]
+  tags:
+      - install
+      - core
 
 - name: Install System Packages 3 (tree, python, docker.io)
   become: true
   apt:
       name: ["tree", "python", "docker.io"]
+  tags:
+      - install
+      - core
 
 - name: Install System Packages 4 (kitty, i3, rofi, compton, compton, i3blocks, feh)
   become: true
   apt:
       name: ["kitty", "i3", "rofi", "compton", "compton", "i3blocks", "feh"]
+  tags:
+      - install
+      - core
