@@ -1,4 +1,4 @@
-- name: Installing stow
+- name: Install stow
   apt: name=stow
   tags:
       - install
