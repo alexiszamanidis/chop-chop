@@ -1,0 +1,29 @@
+- name: Create personal directory
+  shell: mkdir -p {{ personal }}
+  tags:
+      - install
+      - personal-projects
+
+- name: Clone zsh-git-worktree
+  ansible.builtin.git:
+      repo: "git@github.com:alexiszamanidis/zsh-git-worktree.git"
+      dest: "{{ personal }}/zsh-git-worktree"
+      recursive: yes
+      update: yes
+      accept_hostkey: yes
+      version: main
+  tags:
+      - install
+      - personal-projects
+
+- name: Clone alexiszamanidis.github.io
+  ansible.builtin.git:
+      repo: "git@github.com:alexiszamanidis/alexiszamanidis.github.io.git"
+      dest: "{{ personal }}/alexiszamanidis.github.io"
+      recursive: yes
+      update: yes
+      accept_hostkey: yes
+      version: master
+  tags:
+      - install
+      - personal-projects

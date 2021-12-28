@@ -1,6 +1,6 @@
 FROM ubuntu:focal
 ARG TAGS
-ENV USER=root 
+ENV USER=root
 WORKDIR /usr/local/bin
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
@@ -12,4 +12,4 @@ RUN apt-get update && \
     apt-get clean autoclean && \
     apt-get autoremove --yes
 COPY . .
-CMD ["sh", "-c", "ansible-playbook --ask-vault-pass $TAGS local.yml"]
+# CMD ["sh", "-c", "ansible-playbook --ask-vault-pass $TAGS local.yml"]

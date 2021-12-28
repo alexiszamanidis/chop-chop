@@ -21,6 +21,7 @@
       - include: tasks/npm-packages.yml
       - include: tasks/fzf.yml
       - include: tasks/zsh-setup.yml
+      - include: tasks/personal-projects.yml
       - include: tasks/vim-setup.yml
       - include: tasks/brave.yml
       - include: tasks/dotfiles.yml
