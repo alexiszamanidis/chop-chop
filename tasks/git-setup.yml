@@ -12,3 +12,17 @@
       value: "alexiszamanidis"
   tags:
       - git-personal
+- name: Git Upstream setup email
+  git_config:
+      name: user.email
+      scope: global
+      value: "alexis.zamanidis@upstreamsystems.com"
+  tags:
+      - git-upstream
+- name: Git Upstream setup name
+  git_config:
+      name: user.name
+      scope: global
+      value: "alexis.zamanidis"
+  tags:
+      - git-upstream
