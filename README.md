@@ -14,10 +14,10 @@ I migrated from bash scripts to ansible. If you are fun of bash scripts and you 
 ### Installation
 
 ```
-wget -q https://raw.githubusercontent.com/alexiszamanidis/ansible/master/ansible -O ansible && \
-chmod +x ansible && \
-./ansible && \
-rm -rf ./ansible
+git clone https://github.com/alexiszamanidis/ansible.git && \
+cd ansible && \
+chmod +x ansible && ./ansible && \
+ansible-playbook --ask-vault-pass -t install local.yml
 ```
 
 ### Docker
