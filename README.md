@@ -53,3 +53,9 @@ Encrypt file
 ```
 sudo ansible-vault encrypt <path-to-your-file>
 ```
+
+Change vault password
+
+```
+sudo ansible-vault rekey <path-to-your-file>
+```
