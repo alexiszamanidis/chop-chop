@@ -5,6 +5,7 @@
   tags:
       - install
       - core
+      - core-1
 
 - name: Install System Packages 2 (trash-cli, flameshot, preload, htop)
   become: true
@@ -13,6 +14,7 @@
   tags:
       - install
       - core
+      - core-2
 
 - name: Install System Packages 3 (tree, python, docker.io)
   become: true
@@ -21,3 +23,4 @@
   tags:
       - install
       - core
+      - core-3

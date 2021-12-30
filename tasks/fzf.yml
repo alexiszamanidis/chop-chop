@@ -1,4 +1,5 @@
 # dpkg, wget are in core-setup.yml but I added them here as well so I can be able to execute fzf.yml individually
+# I added a core-1 tag in core-setup.yml for these dependencies
 - name: Install dpkg, wget
   become: true
   apt:
