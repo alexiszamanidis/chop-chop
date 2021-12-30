@@ -1,8 +1,12 @@
-- name: Install dpkg
-  apt: name=dpkg
+# dpkg, wget are in core-setup.yml but I added them here as well so I can be able to execute fzf.yml individually
+- name: Install dpkg, wget
+  become: true
+  apt:
+      name: ["dpkg", "wget"]
   tags:
       - install
       - fzf
+
 - name: Install fzf
   become: true
   shell: git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install

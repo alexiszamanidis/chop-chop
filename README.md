@@ -14,11 +14,10 @@ I migrated from bash scripts to ansible. If you are fun of bash scripts and you 
 ### Installation
 
 ```
-<!-- clone repository -->
-git clone https://github.com/alexiszamanidis/ansible.git
-
-<!-- install ansible on your machine -->
-./ansible
+wget -q https://raw.githubusercontent.com/alexiszamanidis/ansible/master/ansible -O ansible && \
+chmod +x ansible && \
+./ansible && \
+rm -rf ./ansible
 ```
 
 ### Docker
@@ -30,6 +29,12 @@ Before doing anything, you need to make sure that your machine can run the insta
 ```
 
 ### Ansible Notes
+
+List tags
+
+```
+ansible-playbook --list-tags local.yml
+```
 
 Run specific tag(e.g tag: zsh)
 
