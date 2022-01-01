@@ -11,6 +11,10 @@ Ansible Benefits:
 
 I migrated from bash scripts to ansible. If you are fun of bash scripts and you want to easily set up your system you can check out my [**ubuntu bootstrap repository**](https://github.com/alexiszamanidis/.ubuntu_bootstrap).
 
+### Reminders
+
+-   For VSCode setup, just sign in with your GitHub account
+
 ### Installation
 
 ```

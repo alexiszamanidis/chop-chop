@@ -36,7 +36,7 @@
   tags:
       - install
       - zsh
-- name: Install zsh-git-worktree.git
+- name: Install zsh-git-worktree
   ansible.builtin.git:
       repo: "https://github.com/alexiszamanidis/zsh-git-worktree.git"
       dest: "~/.oh-my-zsh/custom/plugins/zsh-git-worktree.git"
