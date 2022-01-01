@@ -1,8 +1,7 @@
 - name: Install stow
   apt: name=stow
-  tags:
-      - install
-      - dotfiles
+  tags: &tags ["install", "dotfiles"]
+
 - name: Clone dotfiles
   ansible.builtin.git:
       repo: "git@github.com:alexiszamanidis/dotfiles.git"
@@ -11,17 +10,13 @@
       update: yes
       accept_hostkey: yes
       version: main
-  tags:
-      - install
-      - dotfiles
+  tags: *tags
+
 # TODO: remove all default files, folders that need to be stowed
 - name: Remove default .zshrc
   shell: rm -rf ~/.zshrc
-  tags:
-      - install
-      - dotfiles
+  tags: *tags
+
 - name: Stow dotfiles
   shell: cd $HOME/dotfiles && chmod +x install stow unstow && ./install
-  tags:
-      - install
-      - dotfiles
+  tags: *tags

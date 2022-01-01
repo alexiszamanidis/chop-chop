@@ -1,8 +1,6 @@
 - name: Create personal directory
   shell: mkdir -p {{ personal }}
-  tags:
-      - install
-      - personal-projects
+  tags: &tags ["install", "personal-projects"]
 
 - name: Clone zsh-git-worktree
   ansible.builtin.git:
@@ -12,9 +10,7 @@
       update: yes
       accept_hostkey: yes
       version: main
-  tags:
-      - install
-      - personal-projects
+  tags: *tags
 
 - name: Clone alexiszamanidis.github.io
   ansible.builtin.git:
@@ -24,6 +20,4 @@
       update: yes
       accept_hostkey: yes
       version: master
-  tags:
-      - install
-      - personal-projects
+  tags: *tags
