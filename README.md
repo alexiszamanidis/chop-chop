@@ -46,6 +46,13 @@ Run specific tag(e.g tag: zsh)
 ansible-playbook -t <your-tag> local.yml
 ```
 
+Run multiple tags
+
+```
+<!-- e.g. ansible-playbook --ask-vault-pass -t "dotfiles,docker-dotfiles" local.yml -->
+ansible-playbook -t "<your-tag-1>,<your-tag-2>" local.yml
+```
+
 Run specific tag that needs your vaulted password(e.g tag: ssh)
 
 ```
