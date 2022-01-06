@@ -14,6 +14,7 @@ I migrated from bash scripts to ansible. If you are fun of bash scripts and you 
 ### Reminders
 
 -   For VSCode setup, just sign in with your GitHub account
+-   Synchronizes the configuration files for various programs([**dotfiles**](https://github.com/alexiszamanidis/.ubuntu_bootstrap))
 
 ### Installation
 
