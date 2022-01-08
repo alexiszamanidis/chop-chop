@@ -1,5 +1,7 @@
 - name: Create personal directory
-  shell: mkdir -p {{ personal }}
+  file:
+      path: "{{ personal }}"
+      state: directory
   tags: &tags ["install", "personal-projects"]
 
 - name: Clone zsh-git-worktree
