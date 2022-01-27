@@ -30,8 +30,8 @@
       dest: "~/.oh-my-zsh/custom/plugins/zsh-z"
   tags: *tags
 
-- name: Install zsh-git-worktree
+- name: Install zsh-git-fzf
   ansible.builtin.git:
-      repo: "https://github.com/alexiszamanidis/zsh-git-worktree.git"
-      dest: "~/.oh-my-zsh/custom/plugins/zsh-git-worktree"
+      repo: "https://github.com/alexiszamanidis/zsh-git-fzf.git"
+      dest: "~/.oh-my-zsh/custom/plugins/zsh-git-fzf"
   tags: *tags
