@@ -23,3 +23,13 @@
       accept_hostkey: yes
       version: master
   tags: *tags
+
+- name: Clone 2022
+  ansible.builtin.git:
+      repo: "git@github.com:alexiszamanidis/2022.git"
+      dest: "{{ personal }}/2022"
+      recursive: yes
+      update: yes
+      accept_hostkey: yes
+      version: master
+  tags: *tags
