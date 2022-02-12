@@ -29,9 +29,20 @@ ansible-playbook --ask-vault-pass -t install local.yml
 
 Before doing anything, you need to make sure that your machine can run the installation scripts. We can achieve this with Docker.
 
+```bash
+./docker
+
+# Custom example
+./docker -p 3001 -i ansible-image-name -t 2
 ```
-./docker.sh
-```
+
+**Flags**
+
+| Name  | Flag | Default |
+| ----- | ---- | ------- |
+| PORT  | \-p  | 3000    |
+| IMAGE | \-i  | ansible |
+| TAG   | \-t  | 1       |
 
 ### Ansible Notes
 
