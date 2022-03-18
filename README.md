@@ -82,3 +82,9 @@ Change vault password
 ```
 sudo ansible-vault rekey <path-to-your-file>
 ```
+
+### Scripts
+
+`sync-apps`
+
+There are times when I have installed something on my machine and I have not updated this repository and so my Ansible scripts remain outdated. So this script will check my bash history for applications I have installed and will check if these applications are included in my Ansible scripts and if they are not, it will create an installation task for them.
