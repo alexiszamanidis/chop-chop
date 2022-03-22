@@ -7,6 +7,7 @@ RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y software-properties-common curl git build-essential && \
     apt-add-repository -y ppa:ansible/ansible && \
+    add-apt-repository -y ppa:neovim-ppa/unstable && \
     apt-get update && \
     apt-get install -y curl git ansible build-essential neovim && \
     apt-get clean autoclean && \
