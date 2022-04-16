@@ -1,5 +1,15 @@
-- name: Install Packages (kitty, i3, rofi, compton, i3blocks, feh)
+- name: Install Packages (gimp, kitty, i3, rofi, compton, compton, i3blocks, feh)
   become: true
   apt:
-      name: ["kitty", "i3", "rofi", "compton", "i3blocks", "feh"]
+      name:
+          [
+              "gimp",
+              "kitty",
+              "i3",
+              "rofi",
+              "compton",
+              "compton",
+              "i3blocks",
+              "feh",
+          ]
   tags: &tags ["install", "productivity-tools"]
