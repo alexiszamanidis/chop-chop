@@ -4,10 +4,10 @@
       state: directory
   tags: &tags ["install", "personal-projects"]
 
-- name: Clone zsh-git-fzf
+- name: Clone vscode-git-worktrees
   ansible.builtin.git:
-      repo: "git@github.com:alexiszamanidis/zsh-git-fzf.git"
-      dest: "{{ personal }}/zsh-git-fzf"
+      repo: "git@github.com:alexiszamanidis/vscode-git-worktrees.git"
+      dest: "{{ personal }}/vscode-git-worktrees"
       recursive: yes
       update: yes
       accept_hostkey: yes
