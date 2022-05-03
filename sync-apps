@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# or wherever you zsh history file lives
-HISTFILE=~/.zsh_history
+# or wherever you bash history file lives
+HISTFILE=~/.bash_history
 # enable history
 set -o history
 
@@ -11,18 +11,18 @@ packages=()
 
 # iterate through all the commands that contain 'sudo apt install '
 while read -r cmd_string ; do
-    cmd_array=($(echo $cmd_string | cut -d ';' -f2))
+    cmd_array=($cmd_string)
 
     # check if the command starts with 'sudo apt install'
-    sudo="${cmd_array[0]}"
-    apt="${cmd_array[1]}"
-    install="${cmd_array[2]}"
+    sudo="${cmd_array[1]}"
+    apt="${cmd_array[2]}"
+    install="${cmd_array[3]}"
     if [ "$sudo $apt $install" != "$SUDO_APT_INSTALL" ]; then
         continue
     fi
 
     # append all packages
-    for package in "${cmd_array[@]:3}"
+    for package in "${cmd_array[@]:4}"
     do
         packages+=($package)
     done
