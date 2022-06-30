@@ -2,5 +2,15 @@
   become: true
   apt:
       name:
-          ["gimp", "kitty", "i3", "rofi", "compton", "dunst", "i3blocks", "feh"]
+          [
+              "gimp",
+              "tmux",
+              "kitty",
+              "i3",
+              "rofi",
+              "compton",
+              "dunst",
+              "i3blocks",
+              "feh",
+          ]
   tags: &tags ["install", "productivity-tools"]
