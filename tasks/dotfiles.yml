@@ -20,9 +20,3 @@
 - name: Stow dotfiles
   shell: cd $HOME/dotfiles && chmod +x install stow unstow && ./install
   tags: *tags
-
-# TODO need to change this file override. I need to add a user named 'alexzam' in the Docker
-- name: Override ZSH path in .zshrc
-  shell: sed -i "s/export ZSH=\"\/home\/alexzam\/.oh-my-zsh/export ZSH=\"\/root\/.oh-my-zsh/" ~/.zshrc
-  tags:
-      - docker-dotfiles

@@ -15,7 +15,7 @@ ansible-playbook -t <your-tag> local.yml
 Run multiple tags
 
 ```
-<!-- e.g. ansible-playbook --ask-vault-pass -t "dotfiles,docker-dotfiles" local.yml -->
+<!-- e.g. ansible-playbook --ask-vault-pass -t "dotfiles,personal-projects" local.yml -->
 ansible-playbook -t "<your-tag-1>,<your-tag-2>" local.yml
 ```
 
