@@ -1,13 +1,13 @@
 - name: Create personal directory
   file:
-      path: "{{ personal }}"
+      path: "{{ personal_projects }}"
       state: directory
   tags: &tags ["install", "personal-projects"]
 
 - name: Clone vscode-git-worktrees
   ansible.builtin.git:
       repo: "git@github.com:alexiszamanidis/vscode-git-worktrees.git"
-      dest: "{{ personal }}/vscode-git-worktrees"
+      dest: "{{ personal_projects }}/vscode-git-worktrees"
       recursive: yes
       update: yes
       accept_hostkey: yes
@@ -17,7 +17,7 @@
 - name: Clone alexiszamanidis.github.io
   ansible.builtin.git:
       repo: "git@github.com:alexiszamanidis/alexiszamanidis.github.io.git"
-      dest: "{{ personal }}/alexiszamanidis.github.io"
+      dest: "{{ personal_projects }}/alexiszamanidis.github.io"
       recursive: yes
       update: yes
       accept_hostkey: yes
@@ -27,7 +27,7 @@
 - name: Clone 2022
   ansible.builtin.git:
       repo: "git@github.com:alexiszamanidis/2022.git"
-      dest: "{{ personal }}/2022"
+      dest: "{{ personal_projects }}/2022"
       recursive: yes
       update: yes
       accept_hostkey: yes
