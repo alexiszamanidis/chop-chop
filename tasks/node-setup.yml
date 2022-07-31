@@ -4,7 +4,7 @@
       name: ["nodejs", "npm"]
   tags: &tags ["install", "node"]
 
-- name: Create .np,-global
+- name: Create .npm-global directory
   shell: mkdir -p ~/.local/.npm-global
   tags: *tags
 
