@@ -1,14 +1,79 @@
 - name: Install fzf
   become: true
-  shell: git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
-  tags: &tags ["install", "fzf"]
+  apt:
+      name: ["fzf"]
+  tags: &tags ["install", "fzf", "productivity-tools"]
+
+- name: Create bin directory
+  file:
+      path: ~/.local/bin
+      state: directory
+  tags: *tags
 
 - name: Install fd
   become: true
-  shell: wget https://github.com/sharkdp/fd/releases/download/v7.3.0/fd-musl_7.3.0_amd64.deb && dpkg -i fd-musl_7.3.0_amd64.deb && rm -rf fd-musl_7.3.0_amd64.deb
+  apt:
+      name: ["fd-find"]
+  tags: *tags
+
+- name: Check that the fd exists
+  stat:
+      path: ~/.local/bin/fd
+  register: fd_exists
+  tags: *tags
+
+- name: Remove the fd folder
+  file:
+      path: ~/.local/bin/fd
+      state: absent
+  when: fd_exists.stat.isdir is defined and fd_exists.stat.isdir
+  tags: *tags
+
+- name: Link fd
+  file:
+      path: ~/.local/bin/fd
+      src: /usr/bin/fdfind
+      state: link
+      force: yes
+  tags: *tags
+
+# Alternative until bat 0.21.0 is available
+# I need this version of bat, otherwise it crushes with the ripgrep installation
+- name: Download bat
+  become: true
+  get_url:
+      url: https://github.com/sharkdp/bat/releases/download/v0.21.0/bat_0.21.0_amd64.deb
+      dest: ~/.bat-installer
+      mode: a+x
   tags: *tags
 
 - name: Install bat
   become: true
-  shell: wget https://github.com/sharkdp/bat/releases/download/v0.18.1/bat-musl_0.18.1_amd64.deb && dpkg -i bat-musl_0.18.1_amd64.deb && rm -rf bat-musl_0.18.1_amd64.deb
+  shell: dpkg -i ~/.bat-installer && rm -rf ~/.bat-installer
   tags: *tags
+# - name: Install bat
+#   become: true
+#   apt:
+#     name: ["bat"]
+#   tags: *tags
+
+# - name: Check that the bat exists
+#   stat:
+#       path: ~/.local/bin/bat
+#   register: bat_exists
+#   tags: *tags
+
+# - name: Remove the bat folder
+#   file:
+#     path: ~/.local/bin/bat
+#     state: absent
+#   when: bat_exists.stat.isdir is defined and bat_exists.stat.isdir
+#   tags: *tags
+
+# - name: Link bat
+#   file:
+#     path: ~/.local/bin/bat
+#     src: /usr/bin/batcat
+#     state: link
+#     force: yes
+#   tags: *tags

@@ -5,7 +5,9 @@
   tags: &tags ["install", "node"]
 
 - name: Create .npm-global directory
-  shell: mkdir -p ~/.local/.npm-global
+  file:
+      path: ~/.local/.npm-global
+      state: directory
   tags: *tags
 
 - name: Add npm to path
@@ -16,12 +18,17 @@
   shell: npm config set prefix '~/.local/.npm-global'
   tags: *tags
 
-- name: Install N
-  npm:
-      name: n
-      global: yes
+- name: Download nvm
+  get_url:
+      url: https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh
+      dest: ~/.nvm-installer
+      mode: a+x
   tags: *tags
-# TODO: fix this
-# - name: Install version 14 of Node
-#   shell: n 14
+
+- name: Install nvm
+  shell: ~/.nvm-installer && rm -rf ~/.nvm-installer
+  tags: *tags
+# TODO: Should fix this!
+# - name: Install version 16 of Node
+#   shell: source ~/.bashrc && nvm install 16.16.0 && nvm alias default 16.16.0 && nvm use 16.16.0
 #   tags: *tags

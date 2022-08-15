@@ -9,7 +9,7 @@
       name: ["neovim"]
   tags: *tags
 
-- name: Install ripgrep(We need this package for telescope plugin)
+- name: Install neovim prerequisites(ripgrep)
   become: true
   apt:
       name: ["ripgrep"]

@@ -1,16 +1,31 @@
 - name: Install ZSH
+  become: true
   apt: name=zsh
-  tags: &tags ["install", "productivity-tools", "dotfiles", "zsh"]
+  tags: &tags ["install", "dotfiles", "zsh"]
 
-- name: Change shell to zsh
-  shell: chsh -s $(which zsh)
-  tags:
-      - install
-      - zsh
+# TODO: Should fix this!
+# - name: Change shell to zsh
+#   shell: chsh -s $(which zsh)
+#   tags: *tags
 
-- name: Oh-My-Zsh
-  shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer
+- name: Check that the somefile.conf exists
+  stat:
+      path: "{{ lookup('env', 'HOME') }}/.oh-my-zsh"
+  register: oh_my_stats
   tags: *tags
+
+- name: Download Oh-My-Zsh script
+  get_url:
+      url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+      dest: ~/.oh-my-zsh-installer
+      mode: a+x
+  tags: *tags
+  when: oh_my_stats.stat.exists == False
+
+- name: Install Oh-My-Zsh
+  shell: ~/.oh-my-zsh-installer && rm -rf ~/.oh-my-zsh-installer
+  tags: *tags
+  when: oh_my_stats.stat.exists == False
 
 - name: Install zsh-autosuggestions
   ansible.builtin.git:

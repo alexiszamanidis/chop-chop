@@ -1,5 +1,9 @@
 ### Scripts
 
+`ansible`
+
+Installs ansible and runs the tasks
+
 `docker`
 
 Docker script to check if the installation scripts(tasks) can be run on a specific version of Ubuntu

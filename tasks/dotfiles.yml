@@ -1,4 +1,5 @@
 - name: Install stow
+  become: true
   apt: name=stow
   tags: &tags ["install", "dotfiles"]
 
@@ -9,12 +10,15 @@
       recursive: yes
       update: yes
       accept_hostkey: yes
+      key_file: "{{ dest_key }}"
       version: master
   tags: *tags
 
 # TODO: remove all default files, folders that need to be stowed
 - name: Remove default .zshrc
-  shell: rm -rf ~/.zshrc
+  file:
+      state: absent
+      path: ~/.zshrc
   tags: *tags
 
 - name: Stow dotfiles

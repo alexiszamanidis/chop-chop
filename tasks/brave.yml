@@ -5,6 +5,7 @@
   tags: &tags ["install", "brave"]
 
 - name: Download Brave Browser archive-keyring.gpg
+  become: true
   get_url:
       url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
       dest: /usr/share/keyrings/brave-browser-archive-keyring.gpg

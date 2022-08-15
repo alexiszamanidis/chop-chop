@@ -1,17 +1,14 @@
-- name: Install System Packages 1 (dpkg, snapd, curl, wget)
+- name: Install System Packages 1 (snapd, curl, wget, zip)
   become: true
   apt:
-      name: ["dpkg", "snapd", "curl", "wget"]
-  tags:
-      - install
-      - core
-      - fzf
+      name: ["snapd", "curl", "wget", "zip"]
+  tags: &tags ["install", "core"]
 
 - name: Install System Packages 2 (trash-cli, flameshot, preload, htop)
   become: true
   apt:
       name: ["trash-cli", "flameshot", "preload", "htop"]
-  tags: &tags ["install", "core"]
+  tags: *tags
 
 - name: Install System Packages 3 (tree, python, docker.io)
   become: true

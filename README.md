@@ -2,7 +2,7 @@
 
 I automated the installation of packages and applications that I use in my daily work for a new Ubuntu system.
 
-I migrated from bash scripts to ansible. If you are fun of bash scripts and you want to easily set up your system you can check out my [**ubuntu bootstrap repository**](https://github.com/alexiszamanidis/.ubuntu_bootstrap).
+If you are fun of bash scripts and want to easily set up your system you can check out my [**ubuntu bootstrap repository**](https://github.com/alexiszamanidis/.ubuntu_bootstrap).
 
 ### Reminders
 
@@ -13,9 +13,9 @@ I migrated from bash scripts to ansible. If you are fun of bash scripts and you 
 ### Installation
 
 ```
-git clone https://github.com/alexiszamanidis/ansible.git && \
+git clone https://github.com/alexiszamanidis/ansible.git ~/ansible && \
 cd ansible && \
-chmod +x ansible && ./ansible && \
+chmod +x ansible docker sync-apps && ./ansible && \
 ansible-playbook --ask-vault-pass -t install local.yml
 ```
 
