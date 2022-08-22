@@ -1,5 +1,0 @@
-- name: Install default-jre
-  become: true
-  apt:
-      name: ["default-jre"]
-  tags: &tags ["install", "java"]
