@@ -15,14 +15,15 @@
             - core
   tasks:
       - import_tasks: tasks/ssh.yml
-      - import_tasks: tasks/git-setup.yml
-      - import_tasks: tasks/core-setup.yml
-      - import_tasks: tasks/node-setup.yml
+      - import_tasks: tasks/git.yml
+      - import_tasks: tasks/core.yml
+      - import_tasks: tasks/node.yml
       - import_tasks: tasks/npm-packages.yml
+      - import_tasks: tasks/java.yml
       - import_tasks: tasks/fzf.yml
-      - import_tasks: tasks/zsh-setup.yml
+      - import_tasks: tasks/zsh.yml
       - import_tasks: tasks/personal-projects.yml
-      - import_tasks: tasks/nvim-setup.yml
+      - import_tasks: tasks/nvim.yml
       - import_tasks: tasks/fonts.yml
       - import_tasks: tasks/brave.yml
       - import_tasks: tasks/dotfiles.yml
