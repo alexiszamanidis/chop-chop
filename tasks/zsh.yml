@@ -3,10 +3,13 @@
   apt: name=zsh
   tags: &tags ["install", "dotfiles", "zsh"]
 
-# TODO: Should fix this!
-# - name: Change shell to zsh
-#   shell: chsh -s $(which zsh)
-#   tags: *tags
+- name: Change shell and set zsh as default
+  expect:
+      command: "chsh -s /usr/bin/zsh"
+      responses:
+          (?i)password: "{{ unix_password }}"
+      creates: ".shell_is_zsh"
+  tags: *tags
 
 - name: Check that the somefile.conf exists
   stat:

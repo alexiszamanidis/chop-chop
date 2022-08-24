@@ -14,8 +14,7 @@
       version: master
   tags: *tags
 
-# TODO: remove all default files, folders that need to be stowed
-- name: Remove default .zshrc
+- name: Remove all default files/folders that need to be stowed (~/.zshrc)
   file:
       state: absent
       path: ~/.zshrc

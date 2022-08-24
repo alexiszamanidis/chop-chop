@@ -3,6 +3,10 @@
       source_key: "./.ssh/id_rsa"
       dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
       personal_projects: "{{ lookup('env', 'HOME') }}/personal-projects"
+  vars_prompt:
+      - name: "unix_password"
+        prompt: "Enter password"
+        private: yes
   pre_tasks:
       - name: Update Apt
         become: true

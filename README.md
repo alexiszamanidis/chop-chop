@@ -17,7 +17,7 @@ git clone https://github.com/alexiszamanidis/ansible.git ~/ansible && \
 cd ansible && \
 git remote set-url origin git@github.com:alexiszamanidis/ansible.git && \
 chmod +x ansible docker sync-apps && ./ansible && \
-ansible-playbook --ask-vault-pass -t install local.yml
+ansible-playbook --ask-vault-pass -t install local.yml # -e unix_password=current-unix-password
 ```
 
 ### Docker
