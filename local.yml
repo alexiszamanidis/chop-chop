@@ -23,6 +23,7 @@
       - import_tasks: tasks/zsh.yml
       - import_tasks: tasks/personal-projects.yml
       - import_tasks: tasks/nvim.yml
+      - import_tasks: tasks/nvim-packages.yml
       - import_tasks: tasks/fonts.yml
       - import_tasks: tasks/brave.yml
       - import_tasks: tasks/dotfiles.yml
