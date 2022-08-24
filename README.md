@@ -15,6 +15,7 @@ If you are fun of bash scripts and want to easily set up your system you can che
 ```
 git clone https://github.com/alexiszamanidis/ansible.git ~/ansible && \
 cd ansible && \
+git remote set-url origin git@github.com:alexiszamanidis/ansible.git && \
 chmod +x ansible docker sync-apps && ./ansible && \
 ansible-playbook --ask-vault-pass -t install local.yml
 ```

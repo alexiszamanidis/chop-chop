@@ -30,5 +30,5 @@
   tags: *tags
 # TODO: Should fix this!
 # - name: Install version 16 of Node
-#   shell: source ~/.bashrc && nvm install 16.16.0 && nvm alias default 16.16.0 && nvm use 16.16.0
+#   shell: source ~/.bashrc && nvm install 16.16.0 && nvm alias default 16.16.0 && nvm use --delete-prefix v16.16.0 --silent
 #   tags: *tags
