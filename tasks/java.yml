@@ -10,12 +10,32 @@
       state: directory
   tags: *tags
 
+- name: Check that the jdt-language-server exists
+  stat:
+      path: ~/.local/share/nvim/lsp/jdt-language-server/jdt-language-server-1.9.0-202203031534.tar.gz
+  register: jdt_language_server_exists
+  tags: *tags
+
 - name: Download jdt-language-server
   get_url:
       url: https://download.eclipse.org/jdtls/milestones/1.9.0/jdt-language-server-1.9.0-202203031534.tar.gz
       dest: ~/.local/share/nvim/lsp/jdt-language-server
+  when: jdt_language_server_exists.stat.exists == False
   tags: *tags
 
 - name: Extract jdt-language-server
   shell: cd ~/.local/share/nvim/lsp/jdt-language-server && tar -zxvf jdt-language-server-1.9.0-202203031534.tar.gz
+  tags: *tags
+
+- name: Check that the lombok exists
+  stat:
+      path: ~/.local/share/nvim/lsp/jdt-language-server/lombok.jar
+  register: lombok_exists
+  tags: *tags
+
+- name: Download lombok
+  get_url:
+      url: https://projectlombok.org/downloads/lombok.jar
+      dest: ~/.local/share/nvim/lsp/jdt-language-server
+  when: lombok_exists.stat.exists == False
   tags: *tags
