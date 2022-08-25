@@ -13,3 +13,9 @@
   ansible.builtin.pip:
       name: ["codespell", "beautysh"]
   tags: *tags
+
+- name: (null-ls) Install Google-Java-Format
+  npm:
+      name: google-java-format
+      global: yes
+  tags: *tags
