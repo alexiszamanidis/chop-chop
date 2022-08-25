@@ -3,3 +3,19 @@
   apt:
       name: ["default-jre"]
   tags: &tags ["install", "java"]
+
+- name: Create ~/.local/share/nvim/lsp/jdt-language-server/workspace/folder directory
+  file:
+      path: ~/.local/share/nvim/lsp/jdt-language-server/workspace/folder
+      state: directory
+  tags: *tags
+
+- name: Download jdt-language-server
+  get_url:
+      url: https://download.eclipse.org/jdtls/milestones/1.9.0/jdt-language-server-1.9.0-202203031534.tar.gz
+      dest: ~/.local/share/nvim/lsp/jdt-language-server
+  tags: *tags
+
+- name: Extract jdt-language-server
+  shell: cd ~/.local/share/nvim/lsp/jdt-language-server && tar -zxvf jdt-language-server-1.9.0-202203031534.tar.gz
+  tags: *tags
