@@ -11,7 +11,7 @@
       update: yes
       accept_hostkey: yes
       key_file: "{{ dest_key }}"
-      version: master
+      version: nvim-java
   tags: *tags
 
 - name: Remove all default files/folders that need to be stowed (~/.zshrc)

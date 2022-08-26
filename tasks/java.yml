@@ -1,8 +1,17 @@
-- name: Install default-jre
-  become: true
-  apt:
-      name: ["default-jre"]
+# - name: Install default-jre
+#   become: true
+#   apt:
+#       name: ["default-jre"]
+#   tags: &tags ["install", "java"]
+
+- name: Download and Install sdkman
+  shell: curl -s https://get.sdkman.io | bash
   tags: &tags ["install", "java"]
+
+# TODO: Should fix this!
+# - name: Install java via sdk
+#   shell: sdk install java
+#   tags: *tags
 
 - name: Create ~/.local/share/nvim/lsp/jdt-language-server/workspace/folder directory
   file:

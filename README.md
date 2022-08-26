@@ -12,12 +12,23 @@ If you are fun of bash scripts and want to easily set up your system you can che
 
 ### Installation
 
+1.
+
 ```
 git clone https://github.com/alexiszamanidis/ansible.git ~/ansible && \
 cd ansible && \
 git remote set-url origin git@github.com:alexiszamanidis/ansible.git && \
 chmod +x ansible docker sync-apps && ./ansible && \
 ansible-playbook --ask-vault-pass -t install local.yml # -e unix_password=current-unix-password
+```
+
+2. Restart your terminal
+
+3.
+
+```
+sdk install java && \
+nvm install 16.16.0 && nvm use --delete-prefix v16.16.0 && nvm alias default 16.16.0
 ```
 
 ### Docker
@@ -27,7 +38,3 @@ Before doing anything, you need to make sure that your machine can run the insta
 ### Scripts
 
 [Read more](https://github.com/alexiszamanidis/ansible/blob/master/SCRIPTS.md)
-
-### Ansible
-
-[Read more](https://github.com/alexiszamanidis/ansible/blob/master/ANSIBLE.md)
