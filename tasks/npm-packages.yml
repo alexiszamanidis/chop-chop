@@ -1,29 +1,6 @@
-- name: Install Yarn
+- name: Install npm packages
   npm:
-      name: yarn
+      name: "{{ item }}"
       global: yes
   tags: &tags ["install", "npm-packages"]
-
-- name: Install eslint
-  npm:
-      name: eslint
-      global: yes
-  tags: *tags
-
-- name: Install Typescript server
-  npm:
-      name: typescript-language-server
-      global: yes
-  tags: *tags
-
-- name: Install Typescript
-  npm:
-      name: typescript
-      global: yes
-  tags: *tags
-
-- name: Install TS-Node
-  npm:
-      name: ts-node
-      global: yes
-  tags: *tags
+  loop: "{{ npm_packages }}"

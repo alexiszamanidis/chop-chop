@@ -7,6 +7,12 @@
           - "vscode-git-worktrees"
           - "alexiszamanidis.github.io"
           - "2022"
+      npm_packages:
+          - "yarn"
+          - "eslint"
+          - "typescript-language-server"
+          - "typescript"
+          - "ts-node"
   vars_prompt:
       - name: "unix_password"
         prompt: "Enter password"
