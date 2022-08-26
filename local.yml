@@ -2,7 +2,11 @@
   vars:
       source_key: "./.ssh/id_rsa"
       dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
-      personal_projects: "{{ lookup('env', 'HOME') }}/personal-projects"
+      personal_projects_dir: "{{ lookup('env', 'HOME') }}/personal-projects"
+      personal_projects:
+          - "vscode-git-worktrees"
+          - "alexiszamanidis.github.io"
+          - "2022"
   vars_prompt:
       - name: "unix_password"
         prompt: "Enter password"

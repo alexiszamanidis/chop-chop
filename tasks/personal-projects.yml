@@ -1,38 +1,27 @@
 - name: Create personal directory
   file:
-      path: "{{ personal_projects }}"
+      path: "{{ personal_projects_dir }}"
       state: directory
   tags: &tags ["install", "personal-projects"]
 
-- name: Clone vscode-git-worktrees
-  ansible.builtin.git:
-      repo: "git@github.com:alexiszamanidis/vscode-git-worktrees.git"
-      dest: "{{ personal_projects }}/vscode-git-worktrees"
-      recursive: yes
-      update: yes
-      accept_hostkey: yes
-      key_file: "{{ dest_key }}"
-      version: master
+- name: Check if repositories exist
+  stat:
+      path: "{{ personal_projects_dir }}/{{ item }}"
+  register: repositories_stats
   tags: *tags
+  with_items: "{{ personal_projects }}"
 
-- name: Clone alexiszamanidis.github.io
+- name: Clone repositories
   ansible.builtin.git:
-      repo: "git@github.com:alexiszamanidis/alexiszamanidis.github.io.git"
-      dest: "{{ personal_projects }}/alexiszamanidis.github.io"
+      repo: "git@github.com:alexiszamanidis/{{ item.item }}.git"
+      dest: "{{ personal_projects_dir }}/{{ item.item }}"
       recursive: yes
       update: yes
       accept_hostkey: yes
       key_file: "{{ dest_key }}"
       version: master
   tags: *tags
-
-- name: Clone 2022
-  ansible.builtin.git:
-      repo: "git@github.com:alexiszamanidis/2022.git"
-      dest: "{{ personal_projects }}/2022"
-      recursive: yes
-      update: yes
-      accept_hostkey: yes
-      key_file: "{{ dest_key }}"
-      version: master
-  tags: *tags
+  when: item.stat.exists == false or item.stat.isdir == false
+  loop: "{{ repositories_stats.results }}"
+  loop_control:
+      label: "{{ item.item }}"
