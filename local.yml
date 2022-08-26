@@ -15,7 +15,7 @@
           - "ts-node"
   vars_prompt:
       - name: "unix_password"
-        prompt: "Enter password"
+        prompt: "Enter unix password"
         private: yes
   pre_tasks:
       - name: Update Apt
