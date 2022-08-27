@@ -2,7 +2,7 @@
   vars:
       source_key: "./.ssh/id_rsa"
       dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
-      personal_projects_dir: "{{ lookup('env', 'HOME') }}/personal-projects"
+      personal_projects_dir_path: "{{ lookup('env', 'HOME') }}/personal-projects"
       personal_projects:
           - "vscode-git-worktrees"
           - "alexiszamanidis.github.io"
@@ -13,6 +13,22 @@
           - "typescript-language-server"
           - "typescript"
           - "ts-node"
+      oh_my_zsh_dir_path: "{{ lookup('env', 'HOME') }}/.oh-my-zsh"
+      oh_my_zsh_plugins_dir_path: "{{ lookup('env', 'HOME') }}/.oh-my-zsh/custom/plugins"
+      zsh_plugins:
+          - {
+                repo: "https://github.com/zsh-users/zsh-autosuggestions.git",
+                dir: "zsh-autosuggestions",
+            }
+          - {
+                repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git",
+                dir: "zsh-syntax-highlighting",
+            }
+          - { repo: "https://github.com/agkozak/zsh-z.git", dir: "zsh-z" }
+          - {
+                repo: "https://github.com/alexiszamanidis/zsh-git-fzf.git",
+                dir: "zsh-git-fzf",
+            }
   vars_prompt:
       - name: "unix_password"
         prompt: "Enter unix password"

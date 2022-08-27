@@ -14,43 +14,36 @@
 
 - name: Check if .oh-my-zsh exists
   stat:
-      path: "{{ lookup('env', 'HOME') }}/.oh-my-zsh"
+      path: "{{ oh_my_zsh_dir_path }}"
   register: oh_my_stats
   tags: *tags
 
 - name: Download Oh-My-Zsh installation script
   get_url:
       url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
-      dest: "{{ lookup('env', 'HOME') }}.oh-my-zsh-installer"
+      dest: "{{ lookup('env', 'HOME') }}/.oh-my-zsh-installer"
       mode: a+x
   tags: *tags
   when: oh_my_stats.stat.exists == False
 
 - name: Install Oh-My-Zsh
-  shell: "{{ lookup('env', 'HOME') }}.oh-my-zsh-installer && rm -rf {{ lookup('env', 'HOME') }}/.oh-my-zsh-installer"
+  shell: "{{ lookup('env', 'HOME') }}/.oh-my-zsh-installer && rm -rf {{ lookup('env', 'HOME') }}/.oh-my-zsh-installer"
   tags: *tags
   when: oh_my_stats.stat.exists == False
 
-- name: Install zsh-autosuggestions plugin
-  ansible.builtin.git:
-      repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
-      dest: "{{ lookup('env', 'HOME') }}.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+- name: Check if plugins exist
+  stat:
+      path: "{{ oh_my_zsh_plugins_dir_path }}/{{ item.dir }}"
+  register: plugins_stats
   tags: *tags
+  with_items: "{{ zsh_plugins }}"
 
-- name: Install zsh-syntax-highlighting plugin
+- name: Install zsh plugins
   ansible.builtin.git:
-      repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
-      dest: "{{ lookup('env', 'HOME') }}.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+      repo: "{{ item.item.repo }}"
+      dest: "{{ oh_my_zsh_plugins_dir_path }}/{{ item.item.dir }}"
   tags: *tags
-
-- name: Install zsh-z plugin
-  ansible.builtin.git:
-      repo: "https://github.com/agkozak/zsh-z.git"
-      dest: "{{ lookup('env', 'HOME') }}.oh-my-zsh/custom/plugins/zsh-z"
-  tags: *tags
-
-- name: Install zsh-git-fzf plugin
-  ansible.builtin.git:
-      repo: "https://github.com/alexiszamanidis/zsh-git-fzf.git"
-      dest: "{{ lookup('env', 'HOME') }}.oh-my-zsh/custom/plugins/zsh-git-fzf"
-  tags: *tags
+  when: item.stat.exists == false or item.stat.isdir == false
+  loop: "{{ plugins_stats.results }}"
+  loop_control:
+      label: "{{ item.item }}"

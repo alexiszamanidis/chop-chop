@@ -22,7 +22,7 @@ chmod +x ansible docker sync-apps && ./ansible && \
 ansible-playbook --ask-vault-pass -t install local.yml # -e unix_password=current-unix-password
 ```
 
-2. Restart your terminal
+2. Restart the terminal
 
 3.
 
