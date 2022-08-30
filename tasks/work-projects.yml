@@ -1,0 +1,5 @@
+- name: Create work directory
+  file:
+      path: "{{ work_projects_dir_path }}"
+      state: directory
+  tags: &tags ["install", "work-projects"]
