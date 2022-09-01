@@ -48,3 +48,35 @@
       dest: ~/.local/share/nvim/lsp/jdt-language-server
   when: lombok_exists.stat.exists == False
   tags: *tags
+
+- name: Create java directory
+  file:
+      path: "{{ java_dir_path }}"
+      state: directory
+  tags: *tags
+
+- name: Clone java-debug
+  ansible.builtin.git:
+      repo: "https://github.com/microsoft/java-debug.git"
+      dest: "{{ java_dir_path }}/java-debug"
+      recursive: yes
+      update: yes
+      depth: 1
+  tags: *tags
+
+- name: Install java-debug
+  shell: "cd {{ java_dir_path }}/java-debug && mvn clean install"
+  tags: *tags
+
+- name: Clone vscode-java-test
+  ansible.builtin.git:
+      repo: "https://github.com/microsoft/vscode-java-test.git"
+      dest: "{{ java_dir_path }}/vscode-java-test"
+      recursive: yes
+      update: yes
+      depth: 1
+  tags: *tags
+
+- name: Install vscode-java-test
+  shell: "cd {{ java_dir_path }}/vscode-java-test && npm install && npm run build-plugin"
+  tags: *tags
