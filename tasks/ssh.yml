@@ -3,7 +3,7 @@
       dest: "{{ dest_key | dirname }}"
       mode: 0700
       state: directory
-  tags: &tags ["install", "dotfiles", "ssh"]
+  tags: &tags ["install", "ssh"]
 
 - name: Install ssh key
   copy:

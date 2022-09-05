@@ -3,16 +3,23 @@
   apt: name=stow
   tags: &tags ["install", "dotfiles"]
 
+- name: Check if dotfiles exist
+  stat:
+      path: "{{ dotfiles_dir_path }}"
+  register: dotfiles_stats
+  tags: *tags
+
 - name: Clone dotfiles
   ansible.builtin.git:
       repo: "git@github.com:alexiszamanidis/dotfiles.git"
-      dest: "{{ lookup('env', 'HOME') }}/dotfiles"
+      dest: "{{ dotfiles_dir_path }}"
       recursive: yes
       update: yes
       accept_hostkey: yes
       key_file: "{{ dest_key }}"
       # version: master
   tags: *tags
+  when: dotfiles_stats.stat.exists == False
 
 - name: Remove all default files/folders that need to be stowed (~/.zshrc)
   file:
