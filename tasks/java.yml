@@ -65,7 +65,7 @@
   tags: *tags
 
 - name: Install java-debug
-  shell: "cd {{ java_dir_path }}/java-debug && mvn clean install"
+  shell: "cd {{ java_dir_path }}/java-debug && ./mvnw clean install"
   tags: *tags
 
 - name: Clone vscode-java-test
