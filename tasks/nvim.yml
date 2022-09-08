@@ -9,10 +9,10 @@
       name: ["neovim"]
   tags: *tags
 
-- name: Install neovim prerequisites(ripgrep)
+- name: Install neovim prerequisites(xclip, ripgrep)
   become: true
   apt:
-      name: ["ripgrep"]
+      name: ["xclip", "ripgrep"]
   tags: *tags
 
 - name: Check that win32yank.exe exists
