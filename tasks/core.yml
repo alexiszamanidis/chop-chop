@@ -1,17 +1,6 @@
-- name: Install System Packages 1 (snapd, curl, wget, zip)
+- name: Install core system packages
   become: true
   apt:
-      name: ["snapd", "curl", "wget", "zip"]
+      name: "{{ item }}"
   tags: &tags ["install", "core"]
-
-- name: Install System Packages 2 (trash-cli, flameshot, preload, htop)
-  become: true
-  apt:
-      name: ["trash-cli", "flameshot", "preload", "htop"]
-  tags: *tags
-
-- name: Install System Packages 3 (tree, python, docker.io)
-  become: true
-  apt:
-      name: ["tree", "python", "docker.io"]
-  tags: *tags
+  loop: "{{ core_packages }}"

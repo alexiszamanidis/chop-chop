@@ -6,6 +6,18 @@
       work_projects_dir_path: "{{ lookup('env', 'HOME') }}/work-projects"
       personal_projects_dir_path: "{{ lookup('env', 'HOME') }}/personal-projects"
       dotfiles_dir_path: "{{ lookup('env', 'HOME') }}/dotfiles"
+      core_packages:
+          - "snapd"
+          - "curl"
+          - "wget"
+          - "zip"
+          - "trash-cli"
+          - "flameshot"
+          - "preload"
+          - "htop"
+          - "tree"
+          - "python"
+          - "docker.io"
       personal_projects:
           - "vscode-git-worktrees"
           - "alexiszamanidis.github.io"
