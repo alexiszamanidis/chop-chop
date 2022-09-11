@@ -1,11 +1,12 @@
 - hosts: localhost
   vars:
+      user: "{{ lookup('env', 'USER') }}"
+      home: "{{ lookup('env', 'HOME') }}"
       source_key: "./.ssh/id_rsa"
-      dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
-      java_dir_path: "{{ lookup('env', 'HOME') }}/java"
-      work_projects_dir_path: "{{ lookup('env', 'HOME') }}/work-projects"
-      personal_projects_dir_path: "{{ lookup('env', 'HOME') }}/personal-projects"
-      dotfiles_dir_path: "{{ lookup('env', 'HOME') }}/dotfiles"
+      dest_key: "{{ home }}/.ssh/id_rsa"
+      java_dir_path: "{{ home }}/java"
+      work_projects_dir_path: "{{ home }}/work-projects"
+      dotfiles_dir_path: "{{ home }}/dotfiles"
       core_packages:
           - "snapd"
           - "curl"
@@ -28,6 +29,7 @@
           - "compton"
           - "dunst"
           - "feh"
+      personal_projects_dir_path: "{{ home }}/personal-projects"
       personal_projects:
           - "vscode-git-worktrees"
           - "alexiszamanidis.github.io"
@@ -38,8 +40,8 @@
           - "typescript-language-server"
           - "typescript"
           - "ts-node"
-      oh_my_zsh_dir_path: "{{ lookup('env', 'HOME') }}/.oh-my-zsh"
-      oh_my_zsh_plugins_dir_path: "{{ lookup('env', 'HOME') }}/.oh-my-zsh/custom/plugins"
+      oh_my_zsh_dir_path: "{{ home }}/.oh-my-zsh"
+      oh_my_zsh_plugins_dir_path: "{{ home }}/.oh-my-zsh/custom/plugins"
       zsh_plugins:
           - {
                 repo: "https://github.com/zsh-users/zsh-autosuggestions.git",

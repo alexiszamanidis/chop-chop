@@ -21,13 +21,13 @@
 - name: Download Oh-My-Zsh installation script
   get_url:
       url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
-      dest: "{{ lookup('env', 'HOME') }}/.oh-my-zsh-installer"
+      dest: "{{ home }}/.oh-my-zsh-installer"
       mode: a+x
   tags: *tags
   when: oh_my_stats.stat.exists == False
 
 - name: Install Oh-My-Zsh
-  shell: "{{ lookup('env', 'HOME') }}/.oh-my-zsh-installer && rm -rf {{ lookup('env', 'HOME') }}/.oh-my-zsh-installer"
+  shell: "{{ home }}/.oh-my-zsh-installer && rm -rf {{ home }}/.oh-my-zsh-installer"
   tags: *tags
   when: oh_my_stats.stat.exists == False
 
