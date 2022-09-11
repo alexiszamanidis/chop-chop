@@ -1,16 +1,6 @@
-- name: Install Packages (gimp, kitty, i3, rofi, compton, dunst, i3blocks, feh)
+- name: Install productivity tools
   become: true
   apt:
-      name:
-          [
-              "gimp",
-              "tmux",
-              "kitty",
-              "i3",
-              "rofi",
-              "compton",
-              "dunst",
-              "i3blocks",
-              "feh",
-          ]
+      name: "{{ item }}"
   tags: &tags ["install", "productivity-tools"]
+  loop: "{{ productivity_tools }}"

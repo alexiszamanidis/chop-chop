@@ -18,6 +18,16 @@
           - "tree"
           - "python"
           - "docker.io"
+      productivity_tools:
+          - "gimp"
+          - "tmux"
+          - "kitty"
+          - "i3"
+          - "i3blocks"
+          - "rofi"
+          - "compton"
+          - "dunst"
+          - "feh"
       personal_projects:
           - "vscode-git-worktrees"
           - "alexiszamanidis.github.io"
