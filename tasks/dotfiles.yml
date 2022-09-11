@@ -1,6 +1,7 @@
 - name: Install stow
   become: true
-  apt: name=stow
+  apt:
+      name: ["stow"]
   tags: &tags ["install", "dotfiles"]
 
 - name: Check if dotfiles exist
