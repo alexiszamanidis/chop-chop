@@ -13,46 +13,52 @@
 #   shell: sdk install java
 #   tags: *tags
 
-- name: Create ~/.local/share/nvim/lsp/jdt-language-server/workspace/folder directory
+- name: Create java directory
   file:
-      path: ~/.local/share/nvim/lsp/jdt-language-server/workspace/folder
+      path: "{{ java_dir_path }}"
+      state: directory
+  tags: *tags
+
+- name: "Create {{ java_dir_path }}/jdt-language-server/workspace/folder directory"
+  file:
+      path: "{{ java_dir_path }}/jdt-language-server/workspace/folder"
       state: directory
   tags: *tags
 
 - name: Check that the jdt-language-server exists
   stat:
-      path: ~/.local/share/nvim/lsp/jdt-language-server/jdt-language-server-1.9.0-202203031534.tar.gz
+      path: "{{ java_dir_path }}/jdt-language-server/jdt-language-server-1.9.0-202203031534.tar.gz"
   register: jdt_language_server_exists
   tags: *tags
 
 - name: Download jdt-language-server
   get_url:
       url: https://download.eclipse.org/jdtls/milestones/1.9.0/jdt-language-server-1.9.0-202203031534.tar.gz
-      dest: ~/.local/share/nvim/lsp/jdt-language-server
+      dest: "{{ java_dir_path }}/jdt-language-server"
   when: jdt_language_server_exists.stat.exists == False
   tags: *tags
 
 - name: Extract jdt-language-server
-  shell: cd ~/.local/share/nvim/lsp/jdt-language-server && tar -zxvf jdt-language-server-1.9.0-202203031534.tar.gz
+  shell: "cd {{ java_dir_path }}/jdt-language-server && tar -zxvf jdt-language-server-1.9.0-202203031534.tar.gz"
   tags: *tags
 
 - name: Check that the lombok exists
   stat:
-      path: ~/.local/share/nvim/lsp/jdt-language-server/lombok.jar
+      path: "{{ java_dir_path }}/jdt-language-server/lombok.jar"
   register: lombok_exists
   tags: *tags
 
 - name: Download lombok
   get_url:
       url: https://projectlombok.org/downloads/lombok.jar
-      dest: ~/.local/share/nvim/lsp/jdt-language-server
+      dest: "{{ java_dir_path }}/jdt-language-server"
   when: lombok_exists.stat.exists == False
   tags: *tags
 
-- name: Create java directory
-  file:
-      path: "{{ java_dir_path }}"
-      state: directory
+- name: Check that the java-debug exists
+  stat:
+      path: "{{ java_dir_path }}/java-debug"
+  register: java_debug_exists
   tags: *tags
 
 - name: Clone java-debug
@@ -62,10 +68,17 @@
       recursive: yes
       update: yes
       depth: 1
+  when: java_debug_exists.stat.exists == False
   tags: *tags
 
 - name: Install java-debug
   shell: "cd {{ java_dir_path }}/java-debug && ./mvnw clean install"
+  tags: *tags
+  
+- name: Check that the vscode-java-test exists
+  stat:
+      path: "{{ java_dir_path }}/java-debug"
+  register: vscode_java_test_exists
   tags: *tags
 
 - name: Clone vscode-java-test
@@ -75,6 +88,7 @@
       recursive: yes
       update: yes
       depth: 1
+  when: vscode_java_test_exists.stat.exists == False
   tags: *tags
 
 - name: Install vscode-java-test
