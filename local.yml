@@ -34,6 +34,7 @@
           - "vscode-git-worktrees"
           - "alexiszamanidis.github.io"
           - "2022"
+          - "background-images"
       npm_packages:
           - "yarn"
           - "eslint"
