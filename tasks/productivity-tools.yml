@@ -1,6 +1,15 @@
+# TODO: Is there a better way to implement this?
+# - name: Get System Info
+#   shell: uname -a
+#   tags: &tags ["install", "productivity-tools"]
+#   register: system_info
+
 - name: Install productivity tools
   become: true
   apt:
       name: "{{ item }}"
   tags: &tags ["install", "productivity-tools"]
+  # tags: *tags
   loop: "{{ productivity_tools }}"
+  # TODO: microsoft -> wsl
+  # when: "'microsoft' not in system_info|lower"
