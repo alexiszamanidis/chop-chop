@@ -57,10 +57,6 @@
                 repo: "https://github.com/alexiszamanidis/zsh-git-fzf.git",
                 dir: "zsh-git-fzf",
             }
-  vars_prompt:
-      - name: "unix_password"
-        prompt: "Enter unix password"
-        private: yes
   pre_tasks:
       - name: Update Apt
         become: true

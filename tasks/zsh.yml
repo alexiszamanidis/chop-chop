@@ -4,11 +4,17 @@
       name: ["zsh"]
   tags: &tags ["install", "zsh"]
 
+- pause:
+    prompt: "Enter unix password"
+    echo: no
+  register: unix_password
+  tags: *tags
+
 - name: Change shell and set zsh as default
   expect:
       command: "chsh -s /usr/bin/zsh"
       responses:
-          (?i)password: "{{ unix_password }}"
+          (?i)password: "{{ unix_password.user_input }}"
       creates: ".shell_is_zsh"
   tags: *tags
 
