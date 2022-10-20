@@ -16,19 +16,27 @@ Before doing anything, you need to make sure that your machine can run the insta
 
 ### Installation
 
-1.
+1. Create `~/.vault_pass.txt` file and lock it down
+
+```
+echo "my-vault-password" > ~/.vault_pass.txt && \
+chmod 0600 ~/.vault_pass.txt && \
+history -c
+```
+
+2. Clone the repository and start the installation process
 
 ```
 git clone https://github.com/alexiszamanidis/ansible.git ~/ansible && \
 cd ansible && \
 git remote set-url origin git@github.com:alexiszamanidis/ansible.git && \
 chmod +x ansible docker sync-apps && ./ansible && \
-ansible-playbook --ask-vault-pass -t install local.yml
+ansible-playbook -t install local.yml
 ```
 
-2. Restart the terminal
+3. Restart the terminal
 
-3.
+4. Install java and node and manage them via their version managers
 
 ```
 sdk install java && \
