@@ -26,12 +26,23 @@ history -c
 
 2. Clone the repository and start the installation process
 
+- Ubuntu
+
 ```
 git clone https://github.com/alexiszamanidis/ansible.git ~/ansible && \
 cd ansible && \
 git remote set-url origin git@github.com:alexiszamanidis/ansible.git && \
 chmod +x ansible docker sync-apps && ./ansible && \
 ansible-playbook -t install local.yml
+```
+- Windows(WSL)
+
+```
+git clone https://github.com/alexiszamanidis/ansible.git ~/ansible && \
+cd ansible && \
+git remote set-url origin git@github.com:alexiszamanidis/ansible.git && \
+chmod +x ansible docker sync-apps && ./ansible && \
+ansible-playbook -t install --skip-tags productivity-tools local.yml
 ```
 
 3. Restart the terminal
