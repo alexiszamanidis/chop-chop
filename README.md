@@ -33,7 +33,7 @@ git clone https://github.com/alexiszamanidis/ansible.git ~/ansible && \
 cd ansible && \
 git remote set-url origin git@github.com:alexiszamanidis/ansible.git && \
 chmod +x ansible docker sync-apps && ./ansible && \
-ansible-playbook -t install local.yml
+ansible-playbook -t install --skip-tags win32yank local.yml
 ```
 - Windows(WSL)
 
