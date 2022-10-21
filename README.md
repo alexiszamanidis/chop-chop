@@ -24,24 +24,26 @@ chmod 0600 ~/.vault_pass.txt && \
 history -c
 ```
 
-2. Clone the repository and start the installation process
-
-- Ubuntu
+2. Clone the repository and install ansible
 
 ```
 git clone https://github.com/alexiszamanidis/ansible.git ~/ansible && \
 cd ansible && \
 git remote set-url origin git@github.com:alexiszamanidis/ansible.git && \
-chmod +x ansible docker sync-apps && ./ansible && \
+chmod +x ansible docker sync-apps && ./ansible
+```
+
+3. Start the installation process
+
+- *Ubuntu*
+
+```
 ansible-playbook -t install --skip-tags win32yank local.yml
 ```
-- Windows(WSL)
+
+- *Windows(WSL)*
 
 ```
-git clone https://github.com/alexiszamanidis/ansible.git ~/ansible && \
-cd ansible && \
-git remote set-url origin git@github.com:alexiszamanidis/ansible.git && \
-chmod +x ansible docker sync-apps && ./ansible && \
 ansible-playbook -t install --skip-tags productivity-tools local.yml
 ```
 
