@@ -19,9 +19,9 @@
           - "tree"
           - "python"
           - "docker.io"
+          - "tmux"
       productivity_tools:
           - "gimp"
-          - "tmux"
           - "kitty"
           - "i3"
           - "i3blocks"
