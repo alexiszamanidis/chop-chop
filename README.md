@@ -38,13 +38,13 @@ chmod +x ansible docker sync-apps && ./ansible
 - *Ubuntu*
 
 ```
-ansible-playbook -t "install,git" --skip-tags win32yank local.yml
+ansible-playbook -t install --skip-tags win32yank local.yml
 ```
 
 - *Windows(WSL)*
 
 ```
-ansible-playbook -t "install,git" --skip-tags "productivity-tools,brave" local.yml
+ansible-playbook -t install --skip-tags "productivity-tools,brave" local.yml
 ```
 
 3. Restart the terminal
