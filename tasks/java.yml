@@ -1,12 +1,12 @@
-# - name: Install default-jre
-#   become: true
-#   apt:
-#       name: ["default-jre"]
-#   tags: &tags ["install", "java"]
+- name: Install default-jre
+  become: true
+  apt:
+      name: ["default-jre"]
+  tags: &tags ["install", "java"]
 
 - name: Download and Install sdkman
   shell: curl -s https://get.sdkman.io | bash
-  tags: &tags ["install", "java"]
+  tags: *tags
 
 # TODO: Should fix this!
 # - name: Install java via sdk
