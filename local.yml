@@ -13,7 +13,6 @@
           - "wget"
           - "zip"
           - "trash-cli"
-          - "flameshot"
           - "preload"
           - "htop"
           - "tree"
@@ -29,6 +28,7 @@
           - "compton"
           - "dunst"
           - "feh"
+          - "flameshot"
       personal_projects_dir_path: "{{ home }}/personal-projects"
       personal_projects:
           - "vscode-git-worktrees"
