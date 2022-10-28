@@ -1,3 +1,26 @@
+- name: Remove Git
+  become: true
+  package:
+      name: ["git"]
+      state: absent
+  tags: &tags ["git"]
+
+- name: Add git-core/ppa
+  become: true
+  # shell: add-apt-repository -y ppa:git-core/ppa
+  apt_repository:
+      repo: 'ppa:git-core/ppa'
+      state: present
+  tags: *tags
+
+- name: Install git
+  become: true
+  apt:
+      update_cache: yes
+      name: ["git"]
+  tags: *tags
+
+# Personal
 - name: Git personal setup email
   git_config:
       name: user.email
@@ -14,8 +37,7 @@
   tags:
       - git-personal
 
-##########################################################
-
+# Work
 - name: Git work setup email
   git_config:
       name: user.email

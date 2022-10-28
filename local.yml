@@ -69,8 +69,8 @@
             cache_valid_time: 86400 # 1 day
         tags: &tags ["install", "core", "productivity-tools"]
   tasks:
-      - import_tasks: tasks/ssh.yml
       - import_tasks: tasks/git.yml
+      - import_tasks: tasks/ssh.yml
       - import_tasks: tasks/core.yml
       - import_tasks: tasks/node.yml
       - import_tasks: tasks/npm-packages.yml
