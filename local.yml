@@ -35,6 +35,8 @@
           - "alexiszamanidis.github.io"
           - "2022"
           - "background-images"
+          - "scraper"
+          - "wheels"
       npm_packages:
           - "yarn"
           - "eslint"
