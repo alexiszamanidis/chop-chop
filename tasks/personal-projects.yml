@@ -19,7 +19,7 @@
       update: yes
       accept_hostkey: yes
       key_file: "{{ dest_key }}"
-      depth: 1
+      # depth: 1
       # version: master
   tags: *tags
   when: item.stat.exists == false or item.stat.isdir == false

@@ -48,7 +48,7 @@
   ansible.builtin.git:
       repo: "{{ item.item.repo }}"
       dest: "{{ oh_my_zsh_plugins_dir_path }}/{{ item.item.dir }}"
-      depth: 1
+      # depth: 1
   tags: *tags
   when: item.stat.exists == false or item.stat.isdir == false
   loop: "{{ plugins_stats.results }}"
