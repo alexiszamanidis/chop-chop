@@ -2,5 +2,5 @@
   become: true
   apt:
       name: "{{ item }}"
-  tags: &tags ["install", "productivity-tools"]
+  tags: &tags ["install", "productivity-tools", "ubuntu"]
   loop: "{{ productivity_tools }}"
