@@ -2,7 +2,7 @@
   become: true
   apt:
       name: ["apt-transport-https"]
-  tags: &tags ["install", "brave"]
+  tags: &tags ["install", "brave", "ubuntu"]
 
 - name: Download Brave Browser archive-keyring.gpg
   become: true
