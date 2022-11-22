@@ -1,6 +1,6 @@
 ## Ansible
 
-I automated the installation of packages and applications that I use in my daily work for a new Ubuntu system.
+I automated the installation of packages and applications that I use in my daily work.
 
 If you are fun of bash scripts and want to easily set up your system you can check out my [**ubuntu bootstrap repository**](https://github.com/alexiszamanidis/.ubuntu_bootstrap).
 
