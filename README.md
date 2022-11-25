@@ -38,10 +38,10 @@ chmod +x ansible docker sync-apps && ./ansible
 - *Ubuntu*
 
 ```
-ansible-playbook -t install --skip-tags windows local.yml
+ansible-playbook -t install --skip-tags wsl local.yml
 ```
 
-- *Windows(WSL)*
+- *WSL*
 
 ```
 ansible-playbook -t install --skip-tags ubuntu local.yml
