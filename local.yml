@@ -7,6 +7,8 @@
       java_dir_path: "{{ home }}/java"
       work_projects_dir_path: "{{ home }}/work-projects"
       dotfiles_dir_path: "{{ home }}/dotfiles"
+      fehbg_file_path: "{{ home }}/.fehbg"
+      background_images_dir_path: "{{ home }}/personal-projects/background-images"
       core_packages:
           - "snapd"
           - "curl"
@@ -85,3 +87,4 @@
       - import_tasks: tasks/brave.yml
       - import_tasks: tasks/dotfiles.yml
       - import_tasks: tasks/productivity-tools.yml
+      - import_tasks: tasks/background-images.yml

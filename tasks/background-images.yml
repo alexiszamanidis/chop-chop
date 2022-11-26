@@ -1,0 +1,29 @@
+- name: Check if .fehbg exists
+  stat:
+      path: "{{ fehbg_file_path }}"
+  register: fehbg_stats
+  tags: &tags ["install", "background-images", "ubuntu"]
+
+- name: Create .fehbg file
+  file:
+      path: "{{ fehbg_file_path }}"
+      state: touch
+      mode: u=rwx,g=rx,o=r
+  tags: *tags
+  when: fehbg_stats.stat.exists == false or fehbg_stats.stat.isdir == true
+
+- name: Select random image
+  shell: 'find "{{ background_images_dir_path }}" -maxdepth 1 -type f  | shuf -n 1'
+  register: random_image
+  tags: *tags
+  when: fehbg_stats.stat.exists == false or fehbg_stats.stat.isdir == true
+
+- name: Add content to .fehbg script
+  shell: "echo \"#!/bin/sh\nfeh --no-fehbg --bg-max '{{ random_image.stdout }}'\" > {{ home }}/.fehbg"
+  tags: *tags
+  when: fehbg_stats.stat.exists == false or fehbg_stats.stat.isdir == true
+
+- name: Set background image
+  shell: "{{ fehbg_file_path }}"
+  tags: *tags
+  when: fehbg_stats.stat.exists == false or fehbg_stats.stat.isdir == true
