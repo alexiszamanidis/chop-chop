@@ -45,6 +45,8 @@
           - "typescript-language-server"
           - "typescript"
           - "ts-node"
+          - "expo-cli"
+          - "eas-cli"
       oh_my_zsh_dir_path: "{{ home }}/.oh-my-zsh"
       oh_my_zsh_plugins_dir_path: "{{ home }}/.oh-my-zsh/custom/plugins"
       zsh_plugins:
