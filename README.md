@@ -1,10 +1,10 @@
 ## Ansible
 
-I automated the installation of packages and applications that I use in my daily work.
+This repository installs packages and applications that I use in my daily work
 
 ### Reminders
 
-**Make sure that your machine can run the tasks. You can achieve that with `./docker`.**
+**Make sure that your machine can run the tasks. You can achieve that with `./docker`**
 
 #### External Applications
 
