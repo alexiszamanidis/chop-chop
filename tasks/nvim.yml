@@ -32,6 +32,6 @@
   tags: [*tags, "win32yank", "wsl"]
 
 - name: Setup win32yank.exe
-  shell: "chmod +x /tmp/win32yank.exe && mv /tmp/win32yank.exe {{ bin_dir_path }}/fd"
+  shell: "chmod +x /tmp/win32yank.exe && mv /tmp/win32yank.exe {{ bin_dir_path }}"
   when: win32yank_stats.stat.exists == False
   tags: [*tags, "win32yank", "wsl"]
