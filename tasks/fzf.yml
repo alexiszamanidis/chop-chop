@@ -6,7 +6,7 @@
 
 - name: Create bin directory
   file:
-      path: ~/.local/bin
+      path: "{{ bin_dir_path }}"
       state: directory
   tags: *tags
 
@@ -18,20 +18,20 @@
 
 - name: Check that the fd exists
   stat:
-      path: ~/.local/bin/fd
+      path: "{{ bin_dir_path }}/fd"
   register: fd_exists
   tags: *tags
 
 - name: Remove the fd folder
   file:
-      path: ~/.local/bin/fd
+      path: "{{ bin_dir_path }}/fd"
       state: absent
   when: fd_exists.stat.isdir is defined and fd_exists.stat.isdir
   tags: *tags
 
 - name: Link fd
   file:
-      path: ~/.local/bin/fd
+      path: "{{ bin_dir_path }}/fd"
       src: /usr/bin/fdfind
       state: link
       force: yes
@@ -59,20 +59,20 @@
 
 # - name: Check that the bat exists
 #   stat:
-#       path: ~/.local/bin/bat
+#       path: "{{ bin_dir_path }}/bat"
 #   register: bat_exists
 #   tags: *tags
 
 # - name: Remove the bat folder
 #   file:
-#     path: ~/.local/bin/bat
+#     path: "{{ bin_dir_path }}/bat"
 #     state: absent
 #   when: bat_exists.stat.isdir is defined and bat_exists.stat.isdir
 #   tags: *tags
 
 # - name: Link bat
 #   file:
-#     path: ~/.local/bin/bat
+#     path: "{{ bin_dir_path }}/bat"
 #     src: /usr/bin/batcat
 #     state: link
 #     force: yes

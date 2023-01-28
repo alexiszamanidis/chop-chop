@@ -17,7 +17,7 @@
 
 - name: Check that win32yank.exe exists
   stat:
-      path: ~/.local/bin/win32yank.exe
+      path: "{{ bin_dir_path }}/win32yank.exe"
   register: win32yank_stats
   tags: [*tags, "win32yank", "wsl"]
 
@@ -32,6 +32,6 @@
   tags: [*tags, "win32yank", "wsl"]
 
 - name: Setup win32yank.exe
-  shell: chmod +x /tmp/win32yank.exe && mv /tmp/win32yank.exe ~/.local/bin
+  shell: "chmod +x /tmp/win32yank.exe && mv /tmp/win32yank.exe {{ bin_dir_path }}/fd"
   when: win32yank_stats.stat.exists == False
   tags: [*tags, "win32yank", "wsl"]
