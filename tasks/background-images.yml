@@ -1,14 +1,18 @@
-- name: Check if .fehbg exists
+- name: Check if .fehbg file exists
   stat:
       path: "{{ fehbg_file_path }}"
   register: fehbg_stats
   tags: &tags ["install", "background-images", "ubuntu"]
 
+- name: If .fehbg file exists, then ending play 
+  meta: end_play
+  tags: *tags
+  when: fehbg_stats.stat.exists == true and fehbg_stats.stat.isdir == false
+
 - name: Select random image
   shell: 'find "{{ background_images_dir_path }}" -maxdepth 2 -type f -not -path "{{ background_images_dir_path }}/.git/*"  | shuf -n 1'
   register: random_image
   tags: *tags
-  when: fehbg_stats.stat.exists == false or fehbg_stats.stat.isdir == true
 
 - name: Create .fehbg file
   template:
@@ -16,9 +20,7 @@
       dest: ~/.fehbg
       mode: u=rwx,g=rx,o=r
   tags: *tags
-  when: fehbg_stats.stat.exists == false or fehbg_stats.stat.isdir == true
 
 - name: Set background image
   shell: "{{ fehbg_file_path }}"
   tags: *tags
-  when: fehbg_stats.stat.exists == false or fehbg_stats.stat.isdir == true
