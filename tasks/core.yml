@@ -2,5 +2,6 @@
   become: true
   apt:
       name: "{{ item }}"
+      state: latest
   tags: &tags ["install", "core"]
   loop: "{{ core_packages }}"

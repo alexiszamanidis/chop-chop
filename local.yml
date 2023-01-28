@@ -10,6 +10,7 @@
       fehbg_file_path: "{{ home }}/.fehbg"
       background_images_dir_path: "{{ home }}/personal-projects/background-images"
       core_packages:
+          - "git"
           - "snapd"
           - "curl"
           - "wget"
