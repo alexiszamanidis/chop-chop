@@ -5,13 +5,17 @@
   register: git_version
   tags: &tags ["install", "git"]
 
+- name: If git version >= 2.38.1, then don't continue the tasks
+  meta: end_play
+  tags: *tags
+  when: git_version.stdout >= "2.38.1"
+
 - name: Remove Git
   become: true
   package:
       name: ["git"]
       state: absent
   tags: *tags
-  when: git_version.stdout < "2.38.1"
 
 - name: Add git-core/ppa
   become: true
@@ -19,7 +23,6 @@
       repo: 'ppa:git-core/ppa'
       state: present
   tags: *tags
-  when: git_version.stdout < "2.38.1"
 
 - name: Install git
   become: true
@@ -27,7 +30,6 @@
       update_cache: yes
       name: ["git"]
   tags: *tags
-  when: git_version.stdout < "2.38.1"
 
 # Personal
 - name: Git personal setup email
