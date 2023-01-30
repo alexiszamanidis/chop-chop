@@ -5,7 +5,7 @@ port=3000
 image="ansible"
 tag=1
 
-# iterate throught user input arguments
+# iterate through user input arguments
 while getopts :p:i:t:d options; do
     case $options in
         p) port=$OPTARG ;;
