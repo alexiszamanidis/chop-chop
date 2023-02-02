@@ -13,7 +13,7 @@ This repository installs packages and applications that I use in my daily work
 
 ### Installation
 
-1. Create `~/.vault_pass.txt` file and lock it down
+1. Create `~/.vault_pass.txt` file, lock it down and clear the bash history
 
 ```
 echo "my-vault-password" > ~/.vault_pass.txt && \
