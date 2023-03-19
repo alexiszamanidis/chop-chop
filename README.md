@@ -32,16 +32,8 @@ chmod +x ansible docker sync-apps && ./ansible
 
 3. Start the installation process
 
-- *Ubuntu*
-
 ```
-ansible-playbook -t install --skip-tags wsl local.yml
-```
-
-- *WSL*
-
-```
-ansible-playbook -t install --skip-tags ubuntu local.yml
+ansible-playbook -t install local.yml
 ```
 
 3. Restart the terminal

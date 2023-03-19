@@ -2,6 +2,7 @@
   vars:
       user: "{{ lookup('env', 'USER') }}"
       home: "{{ lookup('env', 'HOME') }}"
+      is_wsl: "{{ (lookup('env', 'WSL_DISTRO_NAME') != '') or (lookup('env', 'IS_WSL') != '')  }}"
       source_key: "./.ssh/id_rsa"
       dest_key: "{{ home }}/.ssh/id_rsa"
       java_dir_path: "{{ home }}/java"
@@ -87,6 +88,7 @@
       - import_tasks: tasks/personal-projects.yml
       - import_tasks: tasks/work-projects.yml
       - import_tasks: tasks/nvim.yml
+      - import_tasks: tasks/nvim-wsl.yml
       - import_tasks: tasks/nvim-packages.yml
       - import_tasks: tasks/fonts.yml
       - import_tasks: tasks/brave.yml

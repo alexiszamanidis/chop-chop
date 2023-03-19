@@ -1,8 +1,13 @@
+- name: If the OS is WSL, then don't continue
+  meta: end_play
+  tags: &tags ["install", "background-images"]
+  when: is_wsl == true
+
 - name: Check if .fehbg file exists
   stat:
       path: "{{ fehbg_file_path }}"
   register: fehbg_stats
-  tags: &tags ["install", "background-images", "ubuntu"]
+  tags: *tags
 
 - name: If .fehbg file exists, then don't continue the tasks
   meta: end_play
