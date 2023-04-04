@@ -1,0 +1,3 @@
+[submodule "ansible-work"]
+	path = ansible-work
+	url = git@github.com:alexiszamanidis/ansible-work.git
