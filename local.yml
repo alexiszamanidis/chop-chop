@@ -42,6 +42,7 @@
           - "2022"
           - "background-images"
           - "ryd"
+          - "books"
           - "scraper"
           - "wheels"
       npm_packages:
