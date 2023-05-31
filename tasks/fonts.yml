@@ -6,9 +6,9 @@
 
 - name: Download Nerd Fonts
   get_url:
-    url: "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/{{ item.style }}/complete/{{ item.font_name | replace(' ', '%20') }}.ttf"
-    dest: "{{ fonts_dir_path }}/{{ item.font_name }}.ttf"
-  with_items: "{{ font_files }}"
+    url: "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/{{ item }}/{{ font_name }}-{{ item }}.ttf"
+    dest: "{{ fonts_dir_path }}/{{ font_name }}-{{ item }}.ttf"
+  with_items: "{{ font_styles }}"
   tags: *tags
 
 - name: Update font cache

@@ -6,7 +6,6 @@
       source_key: "./.ssh/id_rsa"
       dest_key: "{{ home }}/.ssh/id_rsa"
       java_dir_path: "{{ home }}/java"
-      fonts_dir_path: "{{ home }}/.local/share/fonts"
       bin_dir_path: "{{ home }}/.local/bin"
       work_projects_dir_path: "{{ home }}/work-projects"
       dotfiles_dir_path: "{{ home }}/dotfiles"
@@ -69,11 +68,13 @@
                 repo: "https://github.com/alexiszamanidis/zsh-git-fzf.git",
                 dir: "zsh-git-fzf",
             }
-      font_files:
-          - { font_name: "Hack Bold Nerd Font Complete Mono", style: "Bold" }
-          - { font_name: "Hack Bold Italic Nerd Font Complete Mono", style: "BoldItalic" }
-          - { font_name: "Hack Italic Nerd Font Complete Mono", style: "Italic" }
-          - { font_name: "Hack Regular Nerd Font Complete Mono", style: "Regular" }
+      fonts_dir_path: "{{ home }}/.local/share/fonts"
+      font_name: "HackNerdFontMono"
+      font_styles:
+          - "Bold"
+          - "BoldItalic"
+          - "Italic"
+          - "Regular"
   pre_tasks:
       - name: Update Apt
         become: true
