@@ -1,13 +1,8 @@
-- name: If the OS is WSL, then don't continue
-  meta: end_play
-  tags: &tags ["install", "brave"]
-  when: is_wsl == true
-
 - name: Install apt-transport-https
   become: true
   apt:
       name: ["apt-transport-https"]
-  tags: *tags
+  tags: &tags ["install", "brave"]
 
 - name: Download Brave Browser archive-keyring.gpg
   become: true

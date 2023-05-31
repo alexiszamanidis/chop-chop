@@ -1,12 +1,7 @@
-- name: If the OS is WSL, then don't continue
-  meta: end_play
-  tags: &tags ["install", "productivity-tools"]
-  when: is_wsl == true
-
 - name: Install productivity tools
   become: true
   apt:
       name: "{{ item }}"
       state: latest
-  tags: *tags
+  tags: &tags ["install", "productivity-tools"]
   loop: "{{ productivity_tools }}"

@@ -50,6 +50,7 @@
           - "typescript-language-server"
           - "typescript"
           - "ts-node"
+          - "prettier"
           - "expo-cli"
           - "eas-cli"
       oh_my_zsh_dir_path: "{{ home }}/.oh-my-zsh"
@@ -97,10 +98,14 @@
       - import_tasks: tasks/work.yml
       - import_tasks: tasks/nvim.yml
       - import_tasks: tasks/nvim-wsl.yml
+        when: is_wsl == true
       - import_tasks: tasks/nvim-packages.yml
       - import_tasks: tasks/fonts.yml
       - import_tasks: tasks/brave.yml
+        when: is_wsl == false
       - import_tasks: tasks/dotfiles.yml
       # - import_tasks: tasks/nvim-setup.yml
       - import_tasks: tasks/productivity-tools.yml
+        when: is_wsl == false
       - import_tasks: tasks/background-images.yml
+        when: is_wsl == false
