@@ -1,0 +1,14 @@
+{
+    "type": "module",
+    "name": "ansible",
+    "version": "1.0.0",
+    "description": "This repository installs packages and applications that I use in my daily work",
+    "scripts": {
+        "format": "prettier . --write"
+    },
+    "author": "Alexis Zamanidis",
+    "license": "MIT",
+    "devDependencies": {
+        "prettier": "3.0.3"
+    }
+}
