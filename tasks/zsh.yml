@@ -5,8 +5,8 @@
   tags: &tags ["install", "zsh"]
 
 - pause:
-    prompt: "Enter unix password"
-    echo: no
+      prompt: "Enter unix password"
+      echo: no
   register: unix_password
   tags: *tags
 

@@ -80,7 +80,7 @@
 - name: Install java-debug
   shell: "cd {{ java_dir_path }}/java-debug && ./mvnw clean install"
   tags: *tags
-  
+
 - name: Check that the vscode-java-test exists
   stat:
       path: "{{ java_dir_path }}/vscode-java-test"

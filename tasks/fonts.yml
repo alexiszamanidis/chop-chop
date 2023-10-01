@@ -6,8 +6,8 @@
 
 - name: Download Nerd Fonts
   get_url:
-    url: "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/{{ item }}/{{ font_name }}-{{ item }}.ttf"
-    dest: "{{ fonts_dir_path }}/{{ font_name }}-{{ item }}.ttf"
+      url: "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/{{ item }}/{{ font_name }}-{{ item }}.ttf"
+      dest: "{{ fonts_dir_path }}/{{ font_name }}-{{ item }}.ttf"
   with_items: "{{ font_styles }}"
   tags: *tags
 

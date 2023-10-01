@@ -44,4 +44,3 @@ ansible-playbook -t install local.yml
 sdk install java && \
 nvm install 16.16.0 && nvm use --delete-prefix v16.16.0 && nvm alias default 16.16.0
 ```
-
