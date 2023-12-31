@@ -7,7 +7,6 @@
       dest_key: "{{ home }}/.ssh/id_rsa"
       java_dir_path: "{{ home }}/java"
       bin_dir_path: "{{ home }}/.local/bin"
-      work_projects_dir_path: "{{ home }}/work-projects"
       dotfiles_dir_path: "{{ home }}/dotfiles"
       fehbg_file_path: "{{ home }}/.fehbg"
       background_images_dir_path: "{{ home }}/personal-projects/background-images"
