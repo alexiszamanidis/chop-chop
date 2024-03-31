@@ -1,6 +1,4 @@
 - hosts: localhost
-  vars_files:
-      - defaults/main.yml
   pre_tasks:
       - name: Update Apt
         become: true
