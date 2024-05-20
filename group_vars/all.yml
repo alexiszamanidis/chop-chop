@@ -66,6 +66,14 @@ zsh_plugins:
           repo: "https://github.com/alexiszamanidis/zsh-git-fzf.git",
           dir: "zsh-git-fzf",
       }
+    - {
+          repo: "https://github.com/Aloxaf/fzf-tab.git",
+          dir: "fzf-tab",
+      }
+    - {
+          repo: "https://github.com/joshskidmore/zsh-fzf-history-search.git",
+          dir: "zsh-fzf-history-search",
+      }
 fonts_dir_path: "{{ home }}/.local/share/fonts"
 font_name: "HackNerdFontMono"
 font_styles:
