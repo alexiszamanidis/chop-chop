@@ -5,11 +5,3 @@
       state: latest
   tags: &tags ["install", "core"]
   loop: "{{ core_apt_packages }}"
-
-- name: Install core pip system packages
-  become: true
-  pip:
-      name: "{{ item }}"
-      state: latest
-  tags: *tags
-  loop: "{{ core_pip_packages }}"

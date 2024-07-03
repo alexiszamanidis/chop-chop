@@ -21,10 +21,9 @@ core_apt_packages:
     - "python3"
     - "python3-pip"
     - "python3-venv"
+    - "python3-pexpect"
     - "docker.io"
     - "tmux"
-core_pip_packages:
-    - "pexpect"
 productivity_tools:
     - "gimp"
     - "kitty"
