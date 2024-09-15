@@ -4,7 +4,25 @@ This repository installs packages and applications that I use in my daily work
 
 ### Reminders
 
-**Make sure that your machine can run the tasks. You can achieve that with `./docker`**
+**Make sure that your machine can run the tasks. You can check it with the following Docker commands:**
+
+1. Build the image
+
+```
+docker-compose build
+```
+
+2. Run the container
+
+```
+docker-compose up
+```
+
+3. Access the container
+
+```
+docker exec -it ansible bash
+```
 
 #### External Applications
 

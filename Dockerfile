@@ -1,16 +1,41 @@
-FROM ubuntu:focal
-ARG TAGS
-ENV USER=root
-WORKDIR /usr/local/bin
-ARG DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y software-properties-common curl git build-essential && \
-    apt-add-repository -y ppa:ansible/ansible && \
-    add-apt-repository -y ppa:neovim-ppa/unstable && \
-    apt-get update && \
-    apt-get install -y curl git ansible build-essential neovim && \
-    apt-get clean autoclean && \
-    apt-get autoremove --yes
-COPY . .
-# CMD ["sh", "-c", "ansible-playbook --ask-vault-pass $TAGS local.yml"]
+# Use Ubuntu 20.04 LTS as the base image
+FROM ubuntu:20.04
+
+# Set environment variables
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Define build argument
+ARG USERNAME
+
+# Update package lists
+RUN apt-get update
+
+# Install basic packages
+RUN apt-get install -y sudo vim
+
+# Clean up to reduce image size
+RUN apt-get clean
+
+# Create the user with sudo privileges
+RUN useradd -m -s /bin/bash ${USERNAME} && \
+    mkdir -p /etc/sudoers.d && \
+    echo '${USERNAME} ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/${USERNAME} && \
+    chmod 0440 /etc/sudoers.d/${USERNAME}
+
+# Copy the current local files (your Ansible repository) into the container
+COPY . /home/${USERNAME}/ansible
+
+# Set the working directory to the ansible repository
+WORKDIR /home/${USERNAME}/ansible
+
+# Change ownership of the copied files without using sudo
+RUN chown -R ${USERNAME}:${USERNAME} /home/${USERNAME}/ansible
+
+# Make the ansible script executable
+RUN chmod +x /home/${USERNAME}/ansible/ansible
+
+# Switch to the specified user
+USER ${USERNAME}
+
+# Default command
+CMD ["bash"]
