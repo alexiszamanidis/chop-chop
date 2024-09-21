@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+docker build -t ansible-linter -f Dockerfile.lint .
+
+docker run --rm -v $(pwd):/ansible ansible-linter /ansible

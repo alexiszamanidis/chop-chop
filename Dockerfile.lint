@@ -1,0 +1,13 @@
+# Use an official Python slim image as the base
+FROM python:3.9-slim
+
+# Install ansible-lint
+RUN pip install --upgrade pip && \
+    pip install ansible ansible-lint
+
+# Set the working directory inside the container
+WORKDIR /ansible
+
+# Command to run ansible-lint with the --fix option
+ENTRYPOINT ["ansible-lint", "--fix"]
+
