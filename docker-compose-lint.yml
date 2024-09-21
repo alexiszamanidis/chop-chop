@@ -2,10 +2,10 @@
 version: "3.8"
 
 services:
-  ansible-linter:
-    build:
-      context: .
-      dockerfile: Dockerfile.lint
-    volumes:
-      - .:/ansible
-    command: [ansible-lint, --fix]
+    ansible-linter:
+        build:
+            context: .
+            dockerfile: Dockerfile.lint
+        volumes:
+            - .:/ansible
+        command: [ansible-lint, --fix]
