@@ -1,6 +1,8 @@
+---
 - name: Install nvim plugins
-  shell: nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
-  tags: &tags ["install", "nvim-setup", "nvim"]
+  ansible.builtin.command: nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
+  changed_when: false
+  tags: [install, nvim-setup, nvim]
 #
 # - name: Install nvim treesitter parsers
 #   shell: nvim --headless -c "TSInstallSync all" -c q
