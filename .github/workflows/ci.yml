@@ -40,7 +40,7 @@ jobs:
             - name: lint ansible playbook playbook.yml
               uses: ansible/ansible-lint@main
               with:
-                  args: "--fix"
+                  args: "--fix -c ./.ansible-lint"
               continue-on-error: true
 
             - name: Commit changes
